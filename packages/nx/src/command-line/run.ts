@@ -27,7 +27,7 @@ import {
 } from '../project-graph/project-graph';
 import { ProjectGraph } from '../config/project-graph';
 
-export interface Target {
+export type Target = {
   project: string;
   target: string;
   configuration?: string;
@@ -83,7 +83,7 @@ async function iteratorToProcessStatusCode(
   // introduced making use of workers and it's unref()-ing the worker
   // too early, causing the process to exit early in environments
   // like CI or when running Docker builds.
-  const keepProcessAliveInterval = setInterval(() => {}, 1000);
+  const keepProcessAliveInterval = setInterval(() => { }, 1000);
   try {
     let prev: IteratorResult<{ success: boolean }>;
     let current: IteratorResult<{ success: boolean }>;
@@ -124,11 +124,7 @@ async function runExecutorInternal<T extends { success: boolean }>(
     project,
     target,
     configuration,
-  }: {
-    project: string;
-    target: string;
-    configuration?: string;
-  },
+  }: Target,
   overrides: { [k: string]: any },
   root: string,
   cwd: string,
@@ -247,11 +243,7 @@ async function runExecutorInternal<T extends { success: boolean }>(
  * Note that the return value is a promise of an iterator, so you need to await before iterating over it.
  */
 export async function runExecutor<T extends { success: boolean }>(
-  targetDescription: {
-    project: string;
-    target: string;
-    configuration?: string;
-  },
+  targetDescription: Target,
   overrides: { [k: string]: any },
   context: ExecutorContext
 ): Promise<AsyncIterableIterator<T>> {
@@ -273,11 +265,7 @@ export async function runExecutor<T extends { success: boolean }>(
 export function run(
   cwd: string,
   root: string,
-  targetDescription: {
-    project: string;
-    target: string;
-    configuration?: string;
-  },
+  targetDescription: Target,
   overrides: { [k: string]: any },
   isVerbose: boolean,
   isHelp: boolean

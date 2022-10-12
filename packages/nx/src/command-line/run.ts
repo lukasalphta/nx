@@ -22,7 +22,6 @@ import {
 import { Executor, ExecutorContext } from '../config/misc-interfaces';
 import { serializeOverridesIntoCommandLine } from 'nx/src/utils/serialize-overrides-into-command-line';
 import {
-  createProjectGraphAsync,
   readCachedProjectGraph,
   readProjectsConfigurationFromProjectGraph,
 } from '../project-graph/project-graph';

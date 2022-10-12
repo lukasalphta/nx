@@ -31,7 +31,7 @@ export type Target = {
   project: string;
   target: string;
   configuration?: string;
-}
+};
 
 export function printRunHelp(
   opts: { project: string; target: string },
@@ -83,7 +83,7 @@ async function iteratorToProcessStatusCode(
   // introduced making use of workers and it's unref()-ing the worker
   // too early, causing the process to exit early in environments
   // like CI or when running Docker builds.
-  const keepProcessAliveInterval = setInterval(() => { }, 1000);
+  const keepProcessAliveInterval = setInterval(() => {}, 1000);
   try {
     let prev: IteratorResult<{ success: boolean }>;
     let current: IteratorResult<{ success: boolean }>;
@@ -120,11 +120,7 @@ function createImplicitTargetConfig(
 }
 
 async function runExecutorInternal<T extends { success: boolean }>(
-  {
-    project,
-    target,
-    configuration,
-  }: Target,
+  { project, target, configuration }: Target,
   overrides: { [k: string]: any },
   root: string,
   cwd: string,

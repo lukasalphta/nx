@@ -31,10 +31,6 @@ It only uses language primitives and immutable objects
 
 - [Workspaces](../../devkit/index#workspaces)
 
-### Commands Interfaces
-
-- [Target](../../devkit/index#target)
-
 ### Other Interfaces
 
 - [NxPlugin](../../devkit/index#nxplugin)
@@ -82,6 +78,10 @@ It only uses language primitives and immutable objects
 - [Task](../../devkit/index#task)
 - [TaskGraph](../../devkit/index#taskgraph)
 - [Workspace](../../devkit/index#workspace)
+
+### Commands Type aliases
+
+- [Target](../../devkit/index#target)
 
 ### Generators Type aliases
 
@@ -215,14 +215,6 @@ It only uses language primitives and immutable objects
 ### Workspaces
 
 • **Workspaces**: `Object`
-
-## Commands Interfaces
-
-### Target
-
-• **Target**: `Object`
-
----
 
 ## Other Interfaces
 
@@ -467,6 +459,22 @@ A plugin for Nx
 ### Workspace
 
 • **Workspace**: `Object`
+
+## Commands Type aliases
+
+### Target
+
+Ƭ **Target**: `Object`
+
+#### Type declaration
+
+| Name             | Type     |
+| :--------------- | :------- |
+| `configuration?` | `string` |
+| `project`        | `string` |
+| `target`         | `string` |
+
+---
 
 ## Generators Type aliases
 
@@ -1694,14 +1702,11 @@ Note that the return value is a promise of an iterator, so you need to await bef
 
 #### Parameters
 
-| Name                               | Type                                                    |
-| :--------------------------------- | :------------------------------------------------------ |
-| `targetDescription`                | `Object`                                                |
-| `targetDescription.configuration?` | `string`                                                |
-| `targetDescription.project`        | `string`                                                |
-| `targetDescription.target`         | `string`                                                |
-| `overrides`                        | `Object`                                                |
-| `context`                          | [`ExecutorContext`](../../devkit/index#executorcontext) |
+| Name                | Type                                                    |
+| :------------------ | :------------------------------------------------------ |
+| `targetDescription` | [`Target`](../../devkit/index#target)                   |
+| `overrides`         | `Object`                                                |
+| `context`           | [`ExecutorContext`](../../devkit/index#executorcontext) |
 
 #### Returns
 
